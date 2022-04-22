@@ -21,16 +21,17 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const characters = await fetch('https://last-airbender-api.herokuapp.com/api/v1/characters?perPage=500').then(res => res.json());
-  return {
-    paths: characters.map(character => {
-      const characterId = character.name.toLowerCase().replace(/ /g, '-').replace(/\'/, '').replace(/\(.+\)/, '');
-      return {
-        params: {
-          characterId
-        }
-      }
-    }).filter(({ params }) => !!params.characterId),
-    fallback: false
-  }
+  // const characters = await fetch('https://last-airbender-api.herokuapp.com/api/v1/characters?perPage=500').then(res => res.json());
+  // return {
+  //   paths: characters.map(character => {
+  //     const characterId = character.name.toLowerCase().replace(/ /g, '-').replace(/\'/, '').replace(/\(.+\)/, '');
+  //     return {
+  //       params: {
+  //         characterId
+  //       }
+  //     }
+  //   }).filter(({ params }) => !!params.characterId),
+  //   fallback: false
+  // }
+  return { paths: [], fallback: true }
 }
